@@ -1,0 +1,20 @@
+tmin = [0 10 20 30 40];
+Pkw = [2.0 2.6 3.0 2.5 1.9];
+th = zeros(1, length(tmin));
+for i = 1:length(tmin)
+    th(i) = tmin(i) / 60;
+    th(i) = %nan;
+end
+ET = trapezes(th, Pkw);
+ES = simpson(th, Pkw);
+//Energie estimee (avec unite) :
+environ 1,68 kwh (T4 = 1,675 kwh;
+s4 = 1,683 kwh)
+// Ecart entre les deux methodes : 
+environ 0,008 kwh
+// Comparaison avec l'incertitude des lectures peut apporter jusqu'a 0,067
+kwh, soit environ 8 fois l'ecart entre les methodes. On ne peut donc
+pas afficher que Simpson donne l'energie la plus juste.
+// Limite des releves espaces de 10 min : un pic ou un arret bref entre
+deux releves est invisible, et Simpson suppose une courbe lisse avec seulement
+4 intervalles. 
